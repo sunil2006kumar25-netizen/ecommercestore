@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechStore - E-commerce</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="index.html">🛒 TechStore</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="cartLink">
+              🛒 Cart <span id="cartCount" class="badge bg-danger">0</span>
+            </a>
+          </li>
+          <li class="nav-item" id="authNav">
+            <a class="nav-link" href="login.html">Login</a>
+          </li>
+          <li class="nav-item" id="userNav" style="display: none;">
+            <a class="nav-link" href="#" id="userEmail"></a>
+          </li>
+          <li class="nav-item" id="logoutNav" style="display: none;">
+            <a class="nav-link" href="#" id="logoutBtn">Logout</a>
+          </li>
+          <li class="nav-item" id="ordersNav" style="display: none;">
+            <a class="nav-link" href="orders.html">My Orders</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="bg-light py-5">
+    <div class="container">
+      <h1 class="display-4">Welcome to TechStore</h1>
+      <p class="lead">Your one-stop shop for quality tech products</p>
+    </div>
+  </div>
+
+  <!-- Products Section -->
+  <div class="container my-5">
+    <div class="row mb-4">
+      <div class="col-md-3">
+        <h5>Filter by Category</h5>
+        <div class="list-group">
+          <button class="list-group-item list-group-item-action active" onclick="filterByCategory('all')">All Products</button>
+          <button class="list-group-item list-group-item-action" onclick="filterByCategory('Electronics')">Electronics</button>
+          <button class="list-group-item list-group-item-action" onclick="filterByCategory('Accessories')">Accessories</button>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <h2>Products</h2>
+        <div id="productsContainer" class="row">
+          <div class="col-12 text-center">
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Details Modal -->
+  <div class="modal fade" id="productModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="productModalTitle"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <img id="productImage" src="" alt="Product" style="width: 100%; max-width: 300px;">
+            </div>
+            <div class="col-md-6">
+              <p id="productDescription"></p>
+              <h4 id="productPrice"></h4>
+              <p id="productStock"></p>
+              <div class="mb-3">
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" class="form-control" value="1" min="1">
+              </div>
+              <button class="btn btn-primary" onclick="addToCart()">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="api.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
