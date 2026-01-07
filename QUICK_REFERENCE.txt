@@ -1,0 +1,199 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                   TECHSTORE E-COMMERCE - QUICK REFERENCE                   ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+🚀 QUICK START
+─────────────────────────────────────────────────────────────────────────────
+Terminal 1 - Backend:
+  $ cd backend
+  $ npm install
+  $ npm start
+  → Running on http://localhost:5000
+
+Terminal 2 - Frontend:
+  $ cd frontend
+  $ python3 -m http.server 8000
+  → Running on http://localhost:8000
+
+📋 TEST CREDENTIALS
+─────────────────────────────────────────────────────────────────────────────
+Email:    john@example.com
+Password: password123
+
+🌐 PAGES & URLS
+─────────────────────────────────────────────────────────────────────────────
+Product Listing:  http://localhost:8000/index.html
+Shopping Cart:    http://localhost:8000/cart.html
+Login/Register:   http://localhost:8000/login.html
+Order History:    http://localhost:8000/orders.html
+
+🔗 API ENDPOINTS
+─────────────────────────────────────────────────────────────────────────────
+Authentication:
+  POST   /api/auth/register          Register new user
+  POST   /api/auth/login             Login user
+
+Products:
+  GET    /api/products               Get all products
+  GET    /api/products/:id           Get product by ID
+  GET    /api/products/category/:cat Get by category
+
+Orders (Protected - requires token):
+  POST   /api/orders                 Create new order
+  GET    /api/orders                 Get user orders
+  GET    /api/orders/:id             Get order details
+
+Health:
+  GET    /api/health                 Check server status
+
+📦 SAMPLE PRODUCTS
+─────────────────────────────────────────────────────────────────────────────
+1. Laptop Pro              $1,299.99   (10 in stock)
+2. Wireless Mouse          $29.99      (50 in stock)
+3. USB-C Cable             $12.99      (100 in stock)
+4. Mechanical Keyboard     $89.99      (25 in stock)
+5. Monitor 4K              $399.99     (15 in stock)
+6. Webcam HD               $59.99      (30 in stock)
+
+📁 FILE STRUCTURE
+─────────────────────────────────────────────────────────────────────────────
+backend/
+  ├── server.js              Main Express app
+  ├── database.js            SQLite database setup
+  ├── package.json           Dependencies
+  ├── .env                   Environment variables
+  ├── routes/
+  │   ├── auth.js            Authentication routes
+  │   ├── products.js        Product routes
+  │   └── orders.js          Order routes
+  └── middleware/
+      └── auth.js            JWT middleware
+
+frontend/
+  ├── index.html             Product listing page
+  ├── cart.html              Shopping cart
+  ├── login.html             Login/Register
+  ├── orders.html            Order history
+  ├── app.js                 Main application logic
+  ├── cart.js                Cart functionality
+  ├── auth.js                Authentication logic
+  ├── orders.js              Orders page logic
+  ├── api.js                 API client
+  └── styles.css             CSS styles
+
+🧪 QUICK TESTS
+─────────────────────────────────────────────────────────────────────────────
+# Check API is running
+curl http://localhost:5000/api/health
+
+# Get all products
+curl http://localhost:5000/api/products
+
+# Get product by ID
+curl http://localhost:5000/api/products/1
+
+# Register user
+curl -X POST http://localhost:5000/api/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{"email":"test@example.com","password":"pass123","name":"Test User"}'
+
+# Login
+curl -X POST http://localhost:5000/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"john@example.com","password":"password123"}'
+
+🔒 SECURITY
+─────────────────────────────────────────────────────────────────────────────
+✓ Passwords hashed with bcryptjs
+✓ JWT authentication tokens
+✓ Protected API endpoints
+✓ CORS enabled
+✓ Input validation
+✓ Secure token storage
+
+📊 FEATURES
+─────────────────────────────────────────────────────────────────────────────
+✓ User Registration & Login
+✓ Product Browsing & Filtering
+✓ Shopping Cart Management
+✓ Order Processing & Checkout
+✓ Order History Tracking
+✓ Responsive Design (Mobile-friendly)
+✓ Real-time Stock Updates
+✓ Tax Calculation (10%)
+
+🛠️ TROUBLESHOOTING
+─────────────────────────────────────────────────────────────────────────────
+Issue: Backend not connecting
+Solution: Make sure npm install is complete, then npm start
+
+Issue: Frontend not loading
+Solution: Run python3 -m http.server 8000 in frontend directory
+
+Issue: CORS errors
+Solution: Check both servers are running (5000 & 8000)
+
+Issue: Cart not saving
+Solution: Enable localStorage in browser settings
+
+Issue: Can't login
+Solution: Try registering a new account first
+
+📚 DOCUMENTATION
+─────────────────────────────────────────────────────────────────────────────
+README.md               Quick start guide
+API_DOCUMENTATION.md   Complete API reference
+TESTING_GUIDE.md       Testing procedures
+DEPLOYMENT_GUIDE.md    Production deployment
+PROJECT_SUMMARY.md     Project overview
+
+🎯 WORKFLOW
+─────────────────────────────────────────────────────────────────────────────
+1. User Registration → Login/auth page
+2. Browse Products   → index.html, filter by category
+3. View Details      → Click "View" on product card
+4. Add to Cart       → Click "Add" or use modal
+5. View Cart         → cart.html, modify items
+6. Checkout          → Login required, process order
+7. View Orders       → orders.html, see history
+
+💾 DATABASE
+─────────────────────────────────────────────────────────────────────────────
+Location: backend/ecommerce.db
+Type: SQLite3
+Tables:
+  - users           (user accounts)
+  - products        (product catalog)
+  - orders          (order records)
+  - order_items     (order line items)
+
+🚀 DEPLOYMENT
+─────────────────────────────────────────────────────────────────────────────
+See DEPLOYMENT_GUIDE.md for:
+  - Heroku deployment
+  - AWS deployment
+  - DigitalOcean deployment
+  - Docker containerization
+  - Performance optimization
+  - Security hardening
+
+📞 KEY COMMANDS
+─────────────────────────────────────────────────────────────────────────────
+# Install backend dependencies
+npm install
+
+# Start backend server
+npm start
+
+# Start frontend (from frontend directory)
+python3 -m http.server 8000
+
+# Reset database (delete for clean start)
+rm backend/ecommerce.db
+
+# Kill server running on port 5000
+lsof -ti:5000 | xargs kill -9
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                    Status: ✅ READY TO USE & TEST                         ║
+╚════════════════════════════════════════════════════════════════════════════╝
